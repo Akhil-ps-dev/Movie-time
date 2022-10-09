@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/core/colors/colors.dart';
 import 'package:flutter_movie_app/presentation/Fast%20&%20Laugh/screen_fast_laugh.dart';
 import 'package:flutter_movie_app/presentation/Home/screen_home.dart';
 import 'package:flutter_movie_app/presentation/New%20&%20Hot/screen_new_hot.dart';
