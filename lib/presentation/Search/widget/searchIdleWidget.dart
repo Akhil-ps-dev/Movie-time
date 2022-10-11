@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/core/colors/colors.dart';
 import 'package:flutter_movie_app/core/const.dart';
 
 const imageUrl =
@@ -24,7 +25,7 @@ class SearchIdleWidget extends StatelessWidget {
           child: ListView.separated(
               shrinkWrap: true,
               itemBuilder: ((ctx, index) => TopSearchItemTile()),
-              separatorBuilder: ((ctx, index) => kHeight),
+              separatorBuilder: ((ctx, index) => kHeightTwenty),
               itemCount: 10),
         )
       ],
@@ -41,18 +42,29 @@ class TopSearchItemTile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: screenWidht * 0.3,
-          height: 100,
-          decoration: BoxDecoration(
+          width: screenWidht * 0.35,
+          height: 65,
+          decoration: const BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(
                   imageUrl,
                 ),
                 fit: BoxFit.cover),
           ),
-          // decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //         image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+        ),
+        const Expanded(
+          child: Text(
+            'Movie Name',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Icon(
+          Icons.play_circle_outline_rounded,
+          color: kWhite,
+          size: 45,
         )
       ],
     );
