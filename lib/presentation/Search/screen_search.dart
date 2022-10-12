@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/const.dart';
-import 'package:flutter_movie_app/presentation/Search/widget/searchIdleWidget.dart';
+import 'package:flutter_movie_app/presentation/Search/widget/search_Idle.dart';
+import 'package:flutter_movie_app/presentation/Search/widget/search_result.dart';
 
 import '../../core/colors/colors.dart';
 
@@ -30,7 +31,10 @@ class ScreenSearch extends StatelessWidget {
                 style: const TextStyle(color: kWhite),
               ),
               kHeight,
-              Expanded(child: SearchIdleWidget()),
+              //Expanded(child: SearchIdleWidget()),
+              Expanded(
+                child: SearchResultWidget(),
+              ),
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
 import 'package:flutter_movie_app/core/const.dart';
+import 'package:flutter_movie_app/presentation/Search/widget/title.dart';
 
 const imageUrl =
     'https://www.themoviedb.org/t/p/w250_and_h141_face/q7XOgkp0NfjqVRYxzU0eGg7wSrm.jpg';
@@ -13,12 +14,8 @@ class SearchIdleWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Top Searces',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
+        SearchTitleWidget(
+          title: 'Top Searches',
         ),
         kHeight,
         Expanded(
