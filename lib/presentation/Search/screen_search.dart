@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/const.dart';
-import 'package:flutter_movie_app/presentation/Search/widget/search_Idle.dart';
 import 'package:flutter_movie_app/presentation/Search/widget/search_result.dart';
 
 import '../../core/colors/colors.dart';
