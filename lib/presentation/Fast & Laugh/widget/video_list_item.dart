@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
+import 'package:flutter_movie_app/core/const.dart';
 
 class VideoListItem extends StatelessWidget {
   const VideoListItem({super.key, required this.index});
@@ -17,8 +18,12 @@ class VideoListItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                //left
                 CircleAvatar(
+                  backgroundColor: Colors.black.withOpacity(0.5),
                   radius: 30,
                   child: IconButton(
                     onPressed: () {},
@@ -29,11 +34,72 @@ class VideoListItem extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                //right
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'),
+                        radius: 30,
+                      ),
+                    ),
+                    VideoActionWidgets(
+                      icon: Icons.emoji_emotions,
+                      title: 'LOL',
+                    ),
+                    VideoActionWidgets(
+                      icon: Icons.add,
+                      title: 'My List',
+                    ),
+                    VideoActionWidgets(
+                      icon: Icons.share,
+                      title: 'Share',
+                    ),
+                    VideoActionWidgets(
+                      icon: Icons.play_arrow,
+                      title: 'Play',
+                    )
+                  ],
+                )
               ],
             ),
           ),
         )
       ],
+    );
+  }
+}
+
+class VideoActionWidgets extends StatelessWidget {
+  const VideoActionWidgets(
+      {super.key, required this.icon, required this.title});
+  final IconData icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            color: kWhite,
+            size: 30,
+          ),
+          Text(
+            title,
+            style: const TextStyle(
+              color: kWhite,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
