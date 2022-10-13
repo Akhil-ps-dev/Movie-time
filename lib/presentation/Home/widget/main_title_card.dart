@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/presentation/widgets/main_title.dart';
 
 import '../../../core/const.dart';
-import '../../widgets/main_home_card.dart';
+import 'main_home_card.dart';
 
 class MainTitleCard extends StatelessWidget {
   const MainTitleCard({Key? key, required this.title})
@@ -25,7 +25,7 @@ class MainTitleCard extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 10,
-            separatorBuilder: (ctx, index) => const SizedBox(),
+            separatorBuilder: (ctx, index) => kWidth,
             itemBuilder: (ctx, index) {
               return const MainHomeCard();
             },

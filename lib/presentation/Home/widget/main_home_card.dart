@@ -14,6 +14,7 @@ class MainHomeCard extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: kBorderR10,
           image: const DecorationImage(
+              fit: BoxFit.cover,
               image: NetworkImage(
                   'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg'))),
     );

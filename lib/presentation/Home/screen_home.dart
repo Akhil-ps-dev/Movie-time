@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/presentation/Home/widget/number_card.dart';
 
 import '../../core/const.dart';
-import '../widgets/main_home_card.dart';
+import 'widget/main_home_card.dart';
 import '../widgets/main_title.dart';
 import 'widget/main_title_card.dart';
 
@@ -17,9 +17,11 @@ class ScreenHome extends StatelessWidget {
         const MainTitleCard(
           title: 'Released in Past year',
         ),
+        kHeight,
         const MainTitleCard(
           title: 'Trending Now',
         ),
+        kHeight,
 
         ///! Number Card Widget
         Column(
@@ -45,10 +47,12 @@ class ScreenHome extends StatelessWidget {
             )
           ],
         ),
+        kHeight,
 
         const MainTitleCard(
           title: 'Tense Dramas',
         ),
+        kHeight,
         const MainTitleCard(
           title: 'South Indians Cinema',
         ),
