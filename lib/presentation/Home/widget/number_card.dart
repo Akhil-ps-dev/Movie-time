@@ -15,7 +15,7 @@ class NumberCardWidget extends StatelessWidget {
         Row(
           children: [
             const SizedBox(
-              width: 50,
+              width: 40,
               height: 150,
             ),
             Container(
@@ -35,14 +35,14 @@ class NumberCardWidget extends StatelessWidget {
         ),
         Positioned(
           left: 20,
-          bottom: 0,
+          bottom: -30,
           child: BorderedText(
             strokeWidth: 5.0,
             strokeColor: kWhite,
             child: Text(
               "${index + 1}",
               style: const TextStyle(
-                  fontSize: 130,
+                  fontSize: 140,
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
             ),
