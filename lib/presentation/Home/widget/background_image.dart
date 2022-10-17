@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/const.dart';
 import 'custom_icon_widget.dart';
+
 class CustomBackgroundImage extends StatelessWidget {
   const CustomBackgroundImage({super.key});
 
@@ -13,7 +14,7 @@ class CustomBackgroundImage extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration:  BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(kMainImg),
@@ -45,6 +46,7 @@ class CustomBackgroundImage extends StatelessWidget {
       ],
     );
   }
+
   TextButton _playButton() {
     return TextButton.icon(
       style: ButtonStyle(
