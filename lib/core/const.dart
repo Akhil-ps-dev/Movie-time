@@ -18,3 +18,7 @@ final kBorderR10 = BorderRadius.circular(10);
 
 const kMainImg =
     "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vwq5iboxYoaSpOmEQrhq9tHicq7.jpg";
+
+//testStyle
+TextStyle kHomeTileText =
+    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
