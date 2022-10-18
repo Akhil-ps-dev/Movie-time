@@ -3,11 +3,13 @@ import 'package:flutter/cupertino.dart';
 const kWidth = SizedBox(
   width: 10,
 );
+const kWidth20 = SizedBox(
+  width: 20,
+);
 const kHeight = SizedBox(
   height: 10,
 );
-
-const kHeightTwenty = SizedBox(
+const kHeight20 = SizedBox(
   height: 20,
 );
 
@@ -25,3 +27,4 @@ const kTemporatyImg =
 //testStyle
 TextStyle kHomeTileText =
     const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+

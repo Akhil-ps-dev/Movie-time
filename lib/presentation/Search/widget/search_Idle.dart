@@ -22,7 +22,7 @@ class SearchIdleWidget extends StatelessWidget {
           child: ListView.separated(
               shrinkWrap: true,
               itemBuilder: ((ctx, index) => TopSearchItemTile()),
-              separatorBuilder: ((ctx, index) => kHeightTwenty),
+              separatorBuilder: ((ctx, index) => kHeight20),
               itemCount: 10),
         )
       ],
