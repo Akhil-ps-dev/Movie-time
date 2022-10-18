@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
+import 'package:flutter_movie_app/presentation/Home/widget/custom_icon_widget.dart';
 import '../../core/const.dart';
 import 'Widget/coming_soon_widget.dart';
+import 'Widget/everyones_watching.dart';
+import 'video_widget.dart';
 
 class ScreenNewandHot extends StatelessWidget {
   const ScreenNewandHot({super.key});
@@ -66,12 +69,13 @@ class ScreenNewandHot extends StatelessWidget {
           body: TabBarView(
             children: [
               _buildTabBarComingSoon(),
-              _buildTabBarEveryonesWatching("heyy"),
+              _buildTabBarEveryonesWatching(),
             ],
           )),
     );
   }
 
+//tabBar
   Widget _buildTabBarComingSoon() {
     return ListView.builder(
       itemBuilder: (context, index) {
@@ -81,9 +85,13 @@ class ScreenNewandHot extends StatelessWidget {
     );
   }
 
-  Widget _buildTabBarEveryonesWatching(String name) {
-    return Center(
-      child: Text("$name"),
+  Widget _buildTabBarEveryonesWatching() {
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return const EveryonesWatchingWidget();
+      },
+      itemCount: 10,
     );
   }
 }
+
