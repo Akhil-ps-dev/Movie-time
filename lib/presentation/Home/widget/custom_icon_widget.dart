@@ -7,14 +7,15 @@ class CustomIconWidger extends StatelessWidget {
       {Key? key,
       required this.icon,
       required this.text,
-      this.textSize = 28,
+      this.color = kWhite,
+      this.iconSize = 28,
       this.fontSize = 18})
       : super(key: key);
   final IconData icon;
   final String text;
-  final double textSize;
+  final double iconSize;
   final double fontSize;
-
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,11 +23,11 @@ class CustomIconWidger extends StatelessWidget {
         Icon(
           icon,
           color: kWhite,
-          size: textSize,
+          size: iconSize,
         ),
         Text(
           text,
-          style: TextStyle(fontSize: fontSize, color: kWhite),
+          style: TextStyle(fontSize: fontSize, color: color),
         ),
       ],
     );
