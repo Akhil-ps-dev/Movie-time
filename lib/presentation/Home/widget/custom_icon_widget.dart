@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 
 class CustomIconWidger extends StatelessWidget {
-  const CustomIconWidger({Key? key, required this.icon, required this.text})
+  const CustomIconWidger(
+      {Key? key,
+      required this.icon,
+      required this.text,
+      this.textSize = 28,
+      this.fontSize = 18})
       : super(key: key);
   final IconData icon;
   final String text;
+  final double textSize;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +22,11 @@ class CustomIconWidger extends StatelessWidget {
         Icon(
           icon,
           color: kWhite,
-          size: 28,
+          size: textSize,
         ),
         Text(
           text,
-          style: const TextStyle(fontSize: 18, color: kWhite),
+          style: TextStyle(fontSize: fontSize, color: kWhite),
         ),
       ],
     );
