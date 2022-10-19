@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
-import 'package:flutter_movie_app/presentation/Home/widget/custom_icon_widget.dart';
 import '../../core/const.dart';
 import 'Widget/coming_soon_widget.dart';
 import 'Widget/everyones_watching.dart';
-import 'video_widget.dart';
+
 
 class ScreenNewandHot extends StatelessWidget {
   const ScreenNewandHot({super.key});
