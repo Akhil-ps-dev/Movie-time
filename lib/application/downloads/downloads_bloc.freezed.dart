@@ -163,3 +163,192 @@ class _$_GetDownloadsImage implements _GetDownloadsImage {
 abstract class _GetDownloadsImage implements DownloadsEvent {
   const factory _GetDownloadsImage() = _$_GetDownloadsImage;
 }
+
+/// @nodoc
+mixin _$DownloadsState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  List<Downloads>? get downloads =>
+      throw _privateConstructorUsedError; //option for error or success
+  Option<Either<MainFailures, List<Downloads>>>
+      get downloadsFailureOrSuccessfulOption =>
+          throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DownloadsStateCopyWith<DownloadsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DownloadsStateCopyWith<$Res> {
+  factory $DownloadsStateCopyWith(
+          DownloadsState value, $Res Function(DownloadsState) then) =
+      _$DownloadsStateCopyWithImpl<$Res, DownloadsState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      List<Downloads>? downloads,
+      Option<Either<MainFailures, List<Downloads>>>
+          downloadsFailureOrSuccessfulOption});
+}
+
+/// @nodoc
+class _$DownloadsStateCopyWithImpl<$Res, $Val extends DownloadsState>
+    implements $DownloadsStateCopyWith<$Res> {
+  _$DownloadsStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? downloads = freezed,
+    Object? downloadsFailureOrSuccessfulOption = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      downloads: freezed == downloads
+          ? _value.downloads
+          : downloads // ignore: cast_nullable_to_non_nullable
+              as List<Downloads>?,
+      downloadsFailureOrSuccessfulOption: null ==
+              downloadsFailureOrSuccessfulOption
+          ? _value.downloadsFailureOrSuccessfulOption
+          : downloadsFailureOrSuccessfulOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<MainFailures, List<Downloads>>>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_DownloadsStateCopyWith<$Res>
+    implements $DownloadsStateCopyWith<$Res> {
+  factory _$$_DownloadsStateCopyWith(
+          _$_DownloadsState value, $Res Function(_$_DownloadsState) then) =
+      __$$_DownloadsStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoading,
+      List<Downloads>? downloads,
+      Option<Either<MainFailures, List<Downloads>>>
+          downloadsFailureOrSuccessfulOption});
+}
+
+/// @nodoc
+class __$$_DownloadsStateCopyWithImpl<$Res>
+    extends _$DownloadsStateCopyWithImpl<$Res, _$_DownloadsState>
+    implements _$$_DownloadsStateCopyWith<$Res> {
+  __$$_DownloadsStateCopyWithImpl(
+      _$_DownloadsState _value, $Res Function(_$_DownloadsState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? downloads = freezed,
+    Object? downloadsFailureOrSuccessfulOption = null,
+  }) {
+    return _then(_$_DownloadsState(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      downloads: freezed == downloads
+          ? _value._downloads
+          : downloads // ignore: cast_nullable_to_non_nullable
+              as List<Downloads>?,
+      downloadsFailureOrSuccessfulOption: null ==
+              downloadsFailureOrSuccessfulOption
+          ? _value.downloadsFailureOrSuccessfulOption
+          : downloadsFailureOrSuccessfulOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<MainFailures, List<Downloads>>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DownloadsState implements _DownloadsState {
+  const _$_DownloadsState(
+      {required this.isLoading,
+      final List<Downloads>? downloads,
+      required this.downloadsFailureOrSuccessfulOption})
+      : _downloads = downloads;
+
+  @override
+  final bool isLoading;
+  final List<Downloads>? _downloads;
+  @override
+  List<Downloads>? get downloads {
+    final value = _downloads;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+//option for error or success
+  @override
+  final Option<Either<MainFailures, List<Downloads>>>
+      downloadsFailureOrSuccessfulOption;
+
+  @override
+  String toString() {
+    return 'DownloadsState(isLoading: $isLoading, downloads: $downloads, downloadsFailureOrSuccessfulOption: $downloadsFailureOrSuccessfulOption)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DownloadsState &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._downloads, _downloads) &&
+            (identical(other.downloadsFailureOrSuccessfulOption,
+                    downloadsFailureOrSuccessfulOption) ||
+                other.downloadsFailureOrSuccessfulOption ==
+                    downloadsFailureOrSuccessfulOption));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_downloads),
+      downloadsFailureOrSuccessfulOption);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DownloadsStateCopyWith<_$_DownloadsState> get copyWith =>
+      __$$_DownloadsStateCopyWithImpl<_$_DownloadsState>(this, _$identity);
+}
+
+abstract class _DownloadsState implements DownloadsState {
+  const factory _DownloadsState(
+      {required final bool isLoading,
+      final List<Downloads>? downloads,
+      required final Option<Either<MainFailures, List<Downloads>>>
+          downloadsFailureOrSuccessfulOption}) = _$_DownloadsState;
+
+  @override
+  bool get isLoading;
+  @override
+  List<Downloads>? get downloads;
+  @override //option for error or success
+  Option<Either<MainFailures, List<Downloads>>>
+      get downloadsFailureOrSuccessfulOption;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DownloadsStateCopyWith<_$_DownloadsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
