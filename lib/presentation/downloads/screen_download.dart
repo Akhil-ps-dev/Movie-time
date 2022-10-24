@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
 import 'package:flutter_movie_app/presentation/widgets/app_bar_widget.dart';
 
+import '../../application/downloads/downloads_bloc.dart';
 import '../../core/const.dart';
 
 class ScreenDowloads extends StatelessWidget {
@@ -43,7 +45,13 @@ class Section2 extends StatelessWidget {
         "https://m.media-amazon.com/images/I/71niXI3lxlL._SY679_.jpg"
   ];
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
+    //Bloc calling
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    
+    // });
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsImage());
     final Size size = MediaQuery.of(context).size;
 
     return Column(

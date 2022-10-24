@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_movie_app/domain/core/failures/main_failure.dart';
@@ -11,7 +13,7 @@ part 'downloads_bloc.freezed.dart';
 
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
-
+  
   final IDowloadsRepo _downloadsRepo;
 
   DownloadsBloc(this._downloadsRepo) : super(DownloadsState.inital()) {
@@ -24,6 +26,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       );
       final Either<MainFailures, List<Downloads>> downloadOption =
           await _downloadsRepo.getDownloadsImage();
+      log(downloadOption.toString());
       emit(
         downloadOption.fold(
           (failure) => state.copyWith(
