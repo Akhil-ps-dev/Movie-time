@@ -166,9 +166,11 @@ abstract class _GetDownloadsImage implements DownloadsEvent {
 
 /// @nodoc
 mixin _$DownloadsState {
-  bool get isLoading => throw _privateConstructorUsedError;
+//loading screen
+  bool get isLoading => throw _privateConstructorUsedError; //result inte state
   List<Downloads>? get downloads =>
-      throw _privateConstructorUsedError; //option for error or success
+      throw _privateConstructorUsedError; //option (curretly error or success shows in UI)
+//optin some or none
   Option<Either<MainFailures, List<Downloads>>>
       get downloadsFailureOrSuccessfulOption =>
           throw _privateConstructorUsedError;
@@ -283,9 +285,12 @@ class _$_DownloadsState implements _DownloadsState {
       required this.downloadsFailureOrSuccessfulOption})
       : _downloads = downloads;
 
+//loading screen
   @override
   final bool isLoading;
+//result inte state
   final List<Downloads>? _downloads;
+//result inte state
   @override
   List<Downloads>? get downloads {
     final value = _downloads;
@@ -294,7 +299,8 @@ class _$_DownloadsState implements _DownloadsState {
     return EqualUnmodifiableListView(value);
   }
 
-//option for error or success
+//option (curretly error or success shows in UI)
+//optin some or none
   @override
   final Option<Either<MainFailures, List<Downloads>>>
       downloadsFailureOrSuccessfulOption;
@@ -340,11 +346,12 @@ abstract class _DownloadsState implements DownloadsState {
       required final Option<Either<MainFailures, List<Downloads>>>
           downloadsFailureOrSuccessfulOption}) = _$_DownloadsState;
 
-  @override
+  @override //loading screen
   bool get isLoading;
-  @override
+  @override //result inte state
   List<Downloads>? get downloads;
-  @override //option for error or success
+  @override //option (curretly error or success shows in UI)
+//optin some or none
   Option<Either<MainFailures, List<Downloads>>>
       get downloadsFailureOrSuccessfulOption;
   @override
