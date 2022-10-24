@@ -35,12 +35,12 @@ dependencies:
   dio: ^4.0.6
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.0.1
   get_it: ^7.2.0
   google_fonts: null
   injectable: ^1.5.3
-  json_annotation: ^4.7.0
-  json_serializable: ^6.5.2
+  json_annotation: ^4.4.0
+  json_serializable: ^6.1.5
   video_player: null
 
 dev_dependencies:
