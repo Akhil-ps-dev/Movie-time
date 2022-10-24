@@ -6,7 +6,7 @@ class DownloadsState with _$DownloadsState {
     //loading screen
     required bool isLoading,
     //result inte state
-    List<Downloads>? downloads,
+    required List<Downloads> downloads,
     //option (curretly error or success shows in UI)
     //optin some or none
     required Option<Either<MainFailures, List<Downloads>>>
@@ -18,6 +18,7 @@ class DownloadsState with _$DownloadsState {
     return const DownloadsState(
       isLoading: false,
       downloadsFailureOrSuccessfulOption: None(),
+      downloads: [],
     );
   }
 }
