@@ -168,7 +168,7 @@ abstract class _GetDownloadsImage implements DownloadsEvent {
 mixin _$DownloadsState {
 //loading screen
   bool get isLoading => throw _privateConstructorUsedError; //result inte state
-  List<Downloads>? get downloads =>
+  List<Downloads> get downloads =>
       throw _privateConstructorUsedError; //option (curretly error or success shows in UI)
 //optin some or none
   Option<Either<MainFailures, List<Downloads>>>
@@ -188,7 +188,7 @@ abstract class $DownloadsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      List<Downloads>? downloads,
+      List<Downloads> downloads,
       Option<Either<MainFailures, List<Downloads>>>
           downloadsFailureOrSuccessfulOption});
 }
@@ -207,7 +207,7 @@ class _$DownloadsStateCopyWithImpl<$Res, $Val extends DownloadsState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? downloads = freezed,
+    Object? downloads = null,
     Object? downloadsFailureOrSuccessfulOption = null,
   }) {
     return _then(_value.copyWith(
@@ -215,10 +215,10 @@ class _$DownloadsStateCopyWithImpl<$Res, $Val extends DownloadsState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      downloads: freezed == downloads
+      downloads: null == downloads
           ? _value.downloads
           : downloads // ignore: cast_nullable_to_non_nullable
-              as List<Downloads>?,
+              as List<Downloads>,
       downloadsFailureOrSuccessfulOption: null ==
               downloadsFailureOrSuccessfulOption
           ? _value.downloadsFailureOrSuccessfulOption
@@ -238,7 +238,7 @@ abstract class _$$_DownloadsStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      List<Downloads>? downloads,
+      List<Downloads> downloads,
       Option<Either<MainFailures, List<Downloads>>>
           downloadsFailureOrSuccessfulOption});
 }
@@ -255,7 +255,7 @@ class __$$_DownloadsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? downloads = freezed,
+    Object? downloads = null,
     Object? downloadsFailureOrSuccessfulOption = null,
   }) {
     return _then(_$_DownloadsState(
@@ -263,10 +263,10 @@ class __$$_DownloadsStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      downloads: freezed == downloads
+      downloads: null == downloads
           ? _value._downloads
           : downloads // ignore: cast_nullable_to_non_nullable
-              as List<Downloads>?,
+              as List<Downloads>,
       downloadsFailureOrSuccessfulOption: null ==
               downloadsFailureOrSuccessfulOption
           ? _value.downloadsFailureOrSuccessfulOption
@@ -281,7 +281,7 @@ class __$$_DownloadsStateCopyWithImpl<$Res>
 class _$_DownloadsState implements _DownloadsState {
   const _$_DownloadsState(
       {required this.isLoading,
-      final List<Downloads>? downloads,
+      required final List<Downloads> downloads,
       required this.downloadsFailureOrSuccessfulOption})
       : _downloads = downloads;
 
@@ -289,14 +289,12 @@ class _$_DownloadsState implements _DownloadsState {
   @override
   final bool isLoading;
 //result inte state
-  final List<Downloads>? _downloads;
+  final List<Downloads> _downloads;
 //result inte state
   @override
-  List<Downloads>? get downloads {
-    final value = _downloads;
-    if (value == null) return null;
+  List<Downloads> get downloads {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_downloads);
   }
 
 //option (curretly error or success shows in UI)
@@ -342,14 +340,14 @@ class _$_DownloadsState implements _DownloadsState {
 abstract class _DownloadsState implements DownloadsState {
   const factory _DownloadsState(
       {required final bool isLoading,
-      final List<Downloads>? downloads,
+      required final List<Downloads> downloads,
       required final Option<Either<MainFailures, List<Downloads>>>
           downloadsFailureOrSuccessfulOption}) = _$_DownloadsState;
 
   @override //loading screen
   bool get isLoading;
   @override //result inte state
-  List<Downloads>? get downloads;
+  List<Downloads> get downloads;
   @override //option (curretly error or success shows in UI)
 //optin some or none
   Option<Either<MainFailures, List<Downloads>>>

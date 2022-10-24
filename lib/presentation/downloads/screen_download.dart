@@ -38,20 +38,14 @@ class ScreenDowloads extends StatelessWidget {
 
 class Section2 extends StatelessWidget {
   Section2({super.key});
-  final List imagesList = [
-    // "https://upload.wikimedia.org/wikipedia/en/e/e4/Paappan_%282022_movie_poster%29.jpg"
-    "https://m.media-amazon.com/images/I/71niXI3lxlL._SY679_.jpg"
-        "https://m.media-amazon.com/images/I/71niXI3lxlL._SY679_.jpg"
-        "https://m.media-amazon.com/images/I/71niXI3lxlL._SY679_.jpg"
-  ];
+
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     //Bloc calling
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<DownloadsBloc>(context)
           .add(const DownloadsEvent.getDownloadsImage());
+    });
     final Size size = MediaQuery.of(context).size;
 
     return Column(
@@ -77,56 +71,65 @@ class Section2 extends StatelessWidget {
         kHeight,
 
         //TODO IMAGE - STACK - ROTATE
-        SizedBox(
-          width: size.width,
-          height: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                radius: size.width * 0.4,
-                backgroundColor: kGrey.withOpacity(0.5),
-              ),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return SizedBox(
+              width: size.width,
+              height: size.width,
+              child: state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: size.width * 0.4,
+                          backgroundColor: kGrey.withOpacity(0.5),
+                        ),
 
-              //!right image
-              DownloadImageWidget(
-                imagesList: imagesList[0],
-                margin: const EdgeInsets.only(
-                  top: 50,
-                  left: 170,
-                ),
-                size: Size(
-                  size.width * 0.35,
-                  size.width * 0.55,
-                ),
-                angle: 25,
-              ),
-              //!left image
+                        //!right image
+                        DownloadImageWidget(
+                          imagesList:
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
+                          margin: const EdgeInsets.only(
+                            top: 50,
+                            left: 170,
+                          ),
+                          size: Size(
+                            size.width * 0.35,
+                            size.width * 0.55,
+                          ),
+                          angle: 25,
+                        ),
+                        //!left image
 
-              DownloadImageWidget(
-                imagesList: imagesList[0],
-                margin: const EdgeInsets.only(
-                  top: 50,
-                  right: 170,
-                ),
-                size: Size(
-                  size.width * 0.35,
-                  size.width * 0.55,
-                ),
-                angle: -25,
-              ),
-              //!middle image
-              DownloadImageWidget(
-                imagesList: imagesList[0],
-                margin: const EdgeInsets.only(
-                  top: 50,
-                  left: 0,
-                  bottom: 40,
-                ),
-                size: Size(size.width * 0.4, size.width * 0.6),
-              ),
-            ],
-          ),
+                        DownloadImageWidget(
+                          imagesList:
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(
+                            top: 50,
+                            right: 170,
+                          ),
+                          size: Size(
+                            size.width * 0.35,
+                            size.width * 0.55,
+                          ),
+                          angle: -25,
+                        ),
+                        //!middle image
+                        DownloadImageWidget(
+                          imagesList:
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(
+                            top: 50,
+                            left: 0,
+                            bottom: 40,
+                          ),
+                          size: Size(size.width * 0.4, size.width * 0.6),
+                        ),
+                      ],
+                    ),
+            );
+          },
         ),
       ],
     );
