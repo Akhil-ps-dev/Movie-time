@@ -87,45 +87,47 @@ class Section2 extends StatelessWidget {
                         ),
 
                         //!right image
-                        DownloadImageWidget(
-                          imagesList:
-                              '$imageAppendUrl${state.downloads[0].posterPath}',
-                          margin: const EdgeInsets.only(
-                            top: 50,
-                            left: 170,
+                        if (state.downloads.length >= 3)
+                          DownloadImageWidget(
+                            imagesList:
+                                '$imageAppendUrl${state.downloads[0].posterPath}',
+                            margin: const EdgeInsets.only(
+                              top: 50,
+                              left: 170,
+                            ),
+                            size: Size(
+                              size.width * 0.35,
+                              size.width * 0.55,
+                            ),
+                            angle: 25,
                           ),
-                          size: Size(
-                            size.width * 0.35,
-                            size.width * 0.55,
-                          ),
-                          angle: 25,
-                        ),
                         //!left image
-
-                        DownloadImageWidget(
-                          imagesList:
-                              '$imageAppendUrl${state.downloads[1].posterPath}',
-                          margin: const EdgeInsets.only(
-                            top: 50,
-                            right: 170,
+                        if (state.downloads.length >= 4)
+                          DownloadImageWidget(
+                            imagesList:
+                                '$imageAppendUrl${state.downloads[1].posterPath}',
+                            margin: const EdgeInsets.only(
+                              top: 50,
+                              right: 170,
+                            ),
+                            size: Size(
+                              size.width * 0.35,
+                              size.width * 0.55,
+                            ),
+                            angle: -25,
                           ),
-                          size: Size(
-                            size.width * 0.35,
-                            size.width * 0.55,
-                          ),
-                          angle: -25,
-                        ),
                         //!middle image
-                        DownloadImageWidget(
-                          imagesList:
-                              '$imageAppendUrl${state.downloads[2].posterPath}',
-                          margin: const EdgeInsets.only(
-                            top: 50,
-                            left: 0,
-                            bottom: 40,
+                        if (state.downloads.length >= 3)
+                          DownloadImageWidget(
+                            imagesList:
+                                '$imageAppendUrl${state.downloads[2].posterPath}',
+                            margin: const EdgeInsets.only(
+                              top: 50,
+                              left: 0,
+                              bottom: 40,
+                            ),
+                            size: Size(size.width * 0.4, size.width * 0.6),
                           ),
-                          size: Size(size.width * 0.4, size.width * 0.6),
-                        ),
                       ],
                     ),
             );
