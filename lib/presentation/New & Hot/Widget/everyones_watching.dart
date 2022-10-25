@@ -4,6 +4,7 @@ import '../../../core/colors/colors.dart';
 import '../../../core/const.dart';
 import '../../Home/widget/custom_icon_widget.dart';
 import '../video_widget.dart';
+
 class EveryonesWatchingWidget extends StatelessWidget {
   const EveryonesWatchingWidget({
     Key? key,

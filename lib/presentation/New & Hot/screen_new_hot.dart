@@ -4,7 +4,6 @@ import '../../core/const.dart';
 import 'Widget/coming_soon_widget.dart';
 import 'Widget/everyones_watching.dart';
 
-
 class ScreenNewandHot extends StatelessWidget {
   const ScreenNewandHot({super.key});
 
@@ -93,4 +92,3 @@ class ScreenNewandHot extends StatelessWidget {
     );
   }
 }
-

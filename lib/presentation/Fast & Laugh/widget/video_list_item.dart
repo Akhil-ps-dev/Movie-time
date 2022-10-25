@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
 
-
 class VideoListItem extends StatelessWidget {
   const VideoListItem({super.key, required this.index});
   final int index;
