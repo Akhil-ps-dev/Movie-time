@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_app/application/search/search_bloc.dart';
 import 'package:flutter_movie_app/core/const.dart';
+import 'package:flutter_movie_app/presentation/Search/widget/search_Idle.dart';
 import 'package:flutter_movie_app/presentation/Search/widget/search_result.dart';
 
 import '../../core/colors/colors.dart';
@@ -14,7 +15,6 @@ class ScreenSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<SearchBloc>(context).add(const Initialized());
-      
     });
     return Scaffold(
       body: SafeArea(
@@ -36,10 +36,12 @@ class ScreenSearch extends StatelessWidget {
                 style: const TextStyle(color: kWhite),
               ),
               kHeight,
-              //Expanded(child: SearchIdleWidget()),
               Expanded(
-                child: SearchResultWidget(),
+                child: SearchIdleWidget(),
               ),
+              // Expanded(
+              //   child: SearchResultWidget(),
+              // ),
             ],
           ),
         ),
