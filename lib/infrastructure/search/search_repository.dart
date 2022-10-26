@@ -4,10 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_movie_app/domain/core/failures/main_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_movie_app/domain/search/i_search_repo.dart';
-import 'package:flutter_movie_app/domain/search/model/search_respo/search_response/search_response.dart';
-
+import 'package:injectable/injectable.dart';
 import '../../domain/core/api_end_points.dart';
+import '../../domain/search/model/search_response/search_response.dart';
 
+@LazySingleton(as: ISearchRepo)
 class SearchRepository implements ISearchRepo {
   @override
   Future<Either<MainFailures, SearchResponse>> searchMovie(
