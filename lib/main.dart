@@ -5,6 +5,8 @@ import 'package:flutter_movie_app/domain/core/dipendencyInjection/injectable.dar
 import 'package:flutter_movie_app/presentation/main_page/screen_main_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'application/search/search_bloc.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (ctx) => getIt<DownloadsBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<SearchBloc>(),
         ),
       ],
       child: MaterialApp(
