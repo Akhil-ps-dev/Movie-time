@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter_movie_app/domain/core/failures/main_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -74,9 +76,43 @@ idle state
 /*
 searchResultState
 */
-    on<SearchMovie>((event, emit) {
+    on<SearchMovie>((event, emit) async {
       //call search movie api
-      _searchRepo.searchMovie(movieQuery: event.movieQuery);
+      log('Searching for ${event.movieQuery}');
+      emit(const SearchState(
+        idleList: [],
+        searchResultList: [],
+        isLoading: true,
+        isError: false,
+      ));
+      final _result =
+          await _searchRepo.searchMovie(movieQuery: event.movieQuery);
+
+      final _state = _result.fold((MainFailures f) {
+        return const SearchState(
+          idleList: [],
+          searchResultList: [],
+          isLoading: false,
+          isError: true,
+        );
+      }, (SearchResponse r) {
+        // emit(
+        //   state.copyWith(
+        //     idleList: [],
+        //     searchResultList: r.results,
+        //     isLoading: false,
+        //     isError: false,
+        //   ),
+        // );
+        return SearchState(
+            isLoading: false,
+            isError: false,
+            idleList: [],
+            searchResultList: r.results);
+      });
+
+      emit(_state);
+
       //show to ui
     });
   }

@@ -14,8 +14,10 @@ class SearchRepository implements ISearchRepo {
   Future<Either<MainFailures, SearchResponse>> searchMovie(
       {required String movieQuery}) async {
     try {
-      final Response response = await Dio(BaseOptions())
+      final response = await Dio(BaseOptions())
           .get(ApiEndPoints.search, queryParameters: {'query': movieQuery});
+
+      log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         //.data is in dio and .body is in http
         final result = SearchResponse.fromJson(response.data);
@@ -24,6 +26,7 @@ class SearchRepository implements ISearchRepo {
       } else {
         return const Left(MainFailures.serverFailure());
       }
+   
     } catch (e) {
       log(e.toString());
       return const Left(MainFailures.clientFailure());
