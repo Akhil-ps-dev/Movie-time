@@ -42,6 +42,7 @@ dependencies:
   injectable: ^1.5.3
   json_annotation: ^4.4.0
   json_serializable: ^6.1.5
+  share_plus: 4.0.3
   video_player: null
 
 dev_dependencies:
