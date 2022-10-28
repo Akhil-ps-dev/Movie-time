@@ -35,8 +35,11 @@ class ScreenFastandLaugh extends StatelessWidget {
             } else {
               return PageView(
                 scrollDirection: Axis.vertical,
-                children: List.generate(10, (index) {
-                  return VideoListItem(index: index);
+                children: List.generate(state.videoList.length, (index) {
+                  return VideoListItemInheritedWidget(
+                      widget: VideoListItem(
+                          key: Key(index.toString()), index: index),
+                      movieData: state.videoList[index]);
                 }),
               );
             }

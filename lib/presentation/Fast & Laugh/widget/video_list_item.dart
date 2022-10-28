@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
+import 'package:flutter_movie_app/core/const.dart';
 
+import '../../../domain/downloads/models/downloads.dart';
 
+class VideoListItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final Downloads movieData;
 
-class VideoListItemInheritedWidget extends VideoListItem{
+  const VideoListItemInheritedWidget(
+      {key, required this.widget, required this.movieData})
+      : super(key: key, child: widget);
 
-  
-  VideoListItemInheritedWidget({required super.index});
+  @override
+  bool updateShouldNotify(covariant VideoListItemInheritedWidget oldWidget) {
+    return oldWidget.movieData != movieData;
+  }
 
-
+  static VideoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<VideoListItemInheritedWidget>();
+  }
 }
-
-
 
 class VideoListItem extends StatelessWidget {
   const VideoListItem({super.key, required this.index});
   final int index;
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        VideoListItemInheritedWidget.of(context)?.movieData.posterPath;
     return Stack(
       children: [
         Container(
@@ -49,12 +61,13 @@ class VideoListItem extends StatelessWidget {
                 //right
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'),
+                        backgroundImage: posterPath == null
+                            ? null
+                            : NetworkImage('$imageAppendUrl$posterPath'),
                         radius: 30,
                       ),
                     ),
