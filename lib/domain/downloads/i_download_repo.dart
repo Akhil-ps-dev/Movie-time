@@ -6,4 +6,5 @@ import 'models/downloads.dart';
 //either failures or success in api call
 abstract class IDowloadsRepo {
   Future<Either<MainFailures, List<Downloads>>> getDownloadsImage();
+  
 }
