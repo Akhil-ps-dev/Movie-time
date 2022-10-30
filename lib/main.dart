@@ -6,6 +6,7 @@ import 'package:flutter_movie_app/presentation/main_page/screen_main_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'application/fast_Laugh/fast_laugh_bloc.dart';
+import 'application/hot_and_new/hot_and_new_bloc.dart';
 import 'application/search/search_bloc.dart';
 
 Future<void> main() async {
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) => getIt<FastLaughBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<HotAndNewBloc>(),
         ),
       ],
       child: MaterialApp(

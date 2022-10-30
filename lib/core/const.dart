@@ -22,8 +22,8 @@ final kBorderR30 = BorderRadius.circular(30);
 const kMainImg =
     "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vwq5iboxYoaSpOmEQrhq9tHicq7.jpg";
 
-const kTemporatyImg =
-    "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/8V1XPEDLtJoxOWlE6gYzn2sQaMp.jpg";
+// const kTemporatyImg =
+    // "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/8V1XPEDLtJoxOWlE6gYzn2sQaMp.jpg";
 //testStyle
 TextStyle kHomeTileText =
     const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);

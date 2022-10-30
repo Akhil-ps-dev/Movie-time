@@ -14,7 +14,7 @@ class DownloadsState with _$DownloadsState {
   }) = _DownloadsState;
 //then create a inintial state
 
-  factory DownloadsState.inital() {
+  factory DownloadsState.initial() {
     return const DownloadsState(
       isLoading: false,
       downloadsFailureOrSuccessfulOption: None(),

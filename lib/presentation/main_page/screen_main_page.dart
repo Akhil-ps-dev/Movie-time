@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/presentation/Fast%20&%20Laugh/screen_fast_laugh.dart';
 import 'package:flutter_movie_app/presentation/Home/screen_home.dart';
-import 'package:flutter_movie_app/presentation/New%20&%20Hot/screen_new_hot.dart';
+import 'package:flutter_movie_app/presentation/Hot%20and%20New/screen_new_hot.dart';
 import 'package:flutter_movie_app/presentation/Search/screen_search.dart';
 import 'package:flutter_movie_app/presentation/downloads/screen_download.dart';
 import 'package:flutter_movie_app/presentation/main_page/widgets/bottom_nav.dart';

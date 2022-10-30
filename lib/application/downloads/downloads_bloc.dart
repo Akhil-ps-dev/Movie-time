@@ -14,7 +14,7 @@ part 'downloads_bloc.freezed.dart';
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final IDowloadsRepo _downloadsRepo;
 
-  DownloadsBloc(this._downloadsRepo) : super(DownloadsState.inital()) {
+  DownloadsBloc(this._downloadsRepo) : super(DownloadsState.initial()) {
     on<_GetDownloadsImage>((event, emit) async {
       emit(
         state.copyWith(

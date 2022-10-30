@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../core/colors/colors.dart';
-import '../../core/const.dart';
 
 class VideoWidget extends StatelessWidget {
-  const VideoWidget({
-    Key? key,
-  }) : super(key: key);
+  final String url;
+  const VideoWidget({Key? key, required this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class VideoWidget extends StatelessWidget {
           height: 200,
           width: double.infinity,
           child: Image.network(
-            kTemporatyImg,
+            url,
             fit: BoxFit.cover,
           ),
         ),
