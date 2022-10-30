@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_movie_app/domain/core/failures/main_failure.dart';
 import 'package:flutter_movie_app/domain/downloads/i_download_repo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,6 +24,8 @@ final dummyVideoUrl = [
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
 ];
+//set to avoid multiple to come
+ValueNotifier<Set<int>> likedVideosIdNotifier = ValueNotifier({});
 
 @injectable
 class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
@@ -30,20 +33,38 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
     on<Initialize>((event, emit) async {
       //show loading in ui
       emit(
-          const FastLaughState(videoList: [], isLoading: true, isError: false));
+        const FastLaughState(
+          videoList: [],
+          isLoading: true,
+          isError: false,
+        ),
+      );
 
       //get trending movies
 
       final _result = await downloadsrepo.getDownloadsImage();
       final _state = _result.fold((MainFailures f) {
-        return const FastLaughState(
-            videoList: [], isLoading: false, isError: true);
+        return FastLaughState(
+          videoList: [],
+          isLoading: false,
+          isError: true,
+        );
       }, (List<Downloads> resp) {
         return FastLaughState(
-            videoList: resp, isLoading: false, isError: false);
+          videoList: resp,
+          isLoading: false,
+          isError: false,
+        );
       });
       //send to ui
       emit(_state);
+    });
+
+    on<LikedVideo>((event, emit) async {
+      likedVideosIdNotifier.value.add(event.id);
+    });
+    on<UnLikedVideo>((event, emit) async {
+      likedVideosIdNotifier.value.remove(event.id);
     });
   }
 }

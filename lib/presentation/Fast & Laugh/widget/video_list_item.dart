@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_app/core/colors/colors.dart';
 import 'package:flutter_movie_app/core/const.dart';
 import 'package:share_plus/share_plus.dart';
@@ -72,13 +74,49 @@ class VideoListItem extends StatelessWidget {
                         radius: 30,
                       ),
                     ),
-                    VideoActionWidgets(
-                      icon: Icons.emoji_emotions,
-                      title: 'LOL',
+                    ValueListenableBuilder(
+                      valueListenable: likedVideosIdNotifier,
+                      builder:
+                          (BuildContext c, Set<int> newLikedListId, Widget? _) {
+                        final _index = index;
+
+                        if (newLikedListId.contains(_index)) {
+                          return GestureDetector(
+                            onTap: () {
+                              likedVideosIdNotifier.value.remove(index);
+                              likedVideosIdNotifier.notifyListeners();
+
+                              // BlocProvider.of<FastLaughBloc>(context)
+                              //     .add(UnLikedVideo(id: _index));
+                            },
+                            child: const VideoActionWidgets(
+                              icon: Icons.emoji_emotions,
+                              title: 'LOL',
+                              color: Colors.yellow,
+                            ),
+                          );
+                        }
+
+                        return GestureDetector(
+                          onTap: () {
+                            likedVideosIdNotifier.value.add(index);
+                            likedVideosIdNotifier.notifyListeners();
+
+                            // BlocProvider.of<FastLaughBloc>(context)
+                            //     .add(LikedVideo(id: _index));
+                          },
+                          child: const VideoActionWidgets(
+                            icon: Icons.emoji_emotions_outlined,
+                            title: 'LOL',
+                            color: kWhite,
+                          ),
+                        );
+                      },
                     ),
-                    VideoActionWidgets(
+                    const VideoActionWidgets(
                       icon: Icons.add,
                       title: 'My List',
+                      color: kWhite,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -91,14 +129,16 @@ class VideoListItem extends StatelessWidget {
                           Share.share(movieName);
                         }
                       },
-                      child: VideoActionWidgets(
+                      child: const VideoActionWidgets(
                         icon: Icons.share,
                         title: 'Share',
+                        color: kWhite,
                       ),
                     ),
-                    VideoActionWidgets(
+                    const VideoActionWidgets(
                       icon: Icons.play_arrow,
                       title: 'Play',
+                      color: kWhite,
                     )
                   ],
                 )
@@ -113,9 +153,13 @@ class VideoListItem extends StatelessWidget {
 
 class VideoActionWidgets extends StatelessWidget {
   const VideoActionWidgets(
-      {super.key, required this.icon, required this.title});
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.color});
   final IconData icon;
   final String title;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +169,7 @@ class VideoActionWidgets extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: kWhite,
+            color: color,
             size: 30,
           ),
           Text(
