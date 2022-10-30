@@ -6,9 +6,15 @@ import '../../Home/widget/custom_icon_widget.dart';
 import '../video_widget.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
-  const EveryonesWatchingWidget({
-    Key? key,
-  }) : super(key: key);
+  final String posterPath;
+  final String movieName;
+  final String description;
+
+  const EveryonesWatchingWidget(
+      {super.key,
+      required this.posterPath,
+      required this.movieName,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,9 @@ class EveryonesWatchingWidget extends StatelessWidget {
           style: TextStyle(color: kGrey),
         ),
         kHeight,
-        const VideoWidget(),
+        VideoWidget(
+          url: posterPath,
+        ),
         kHeight20,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

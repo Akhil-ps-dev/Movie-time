@@ -34,7 +34,7 @@ class HotAndNewRepository implements IHotAndNewRepo {
       return const Left(MainFailures.clientFailure());
     }
   }
-
+///tv api
   @override
   Future<Either<MainFailures, HotandNew>> getHotandNewTvData() async {
     try {
