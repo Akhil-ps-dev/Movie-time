@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/const.dart';
 import '../../Home/widget/custom_icon_widget.dart';
-import '../video_widget.dart';
+import 'video_widget.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
   final String posterPath;
@@ -19,16 +19,19 @@ class EveryonesWatchingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kHeight,
-        const Text(
-          "Lou",
+        Text(
+          movieName,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         kHeight,
-        const Text(
-          "A young girl is kidnapped during a powerful storm.\n Her mother joins forces with her mysterious \nneighbour to set off in pursuit of the kidnapper.\n Their journey will test their limits and expose\n the dark secrets of their past.",
-          style: TextStyle(color: kGrey),
+        Text(
+          description,
+          maxLines: 5,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(color: kGrey),
         ),
         kHeight,
         VideoWidget(
