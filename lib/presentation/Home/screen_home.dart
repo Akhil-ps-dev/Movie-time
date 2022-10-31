@@ -104,9 +104,10 @@ class ScreenHome extends StatelessWidget {
                         kHeight,
 
                         ///! Number Card Widget
-                        NumberTileCard(
-                          posterList: _top10TvShow.sublist(0, 10),
-                        ),
+                        if (_top10TvShow.length >= 10)
+                          NumberTileCard(
+                            posterList: _top10TvShow.sublist(0, 10),
+                          ),
                         kHeight,
                         if (_tensDrama.length >= 10)
                           MainTitleCard(
