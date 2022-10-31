@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_movie_app/application/home/home_bloc.dart';
 import 'package:flutter_movie_app/presentation/Home/widget/background_image.dart';
 import 'package:flutter_movie_app/presentation/Home/widget/number_tile_card.dart';
 import '../../core/const.dart';
@@ -12,6 +14,11 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        BlocProvider.of<HomeBloc>(context).add(const GetHomeScreenData());
+      },
+    );
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: scrollDirectionVisible,
@@ -29,30 +36,79 @@ class ScreenHome extends StatelessWidget {
             }),
             child: Stack(
               children: [
-                ListView(
-                  children: const [
-                    CustomBackgroundImage(),
-                    MainTitleCard(
-                      title: 'Released in Past year',
-                    ),
-                    kHeight,
-                    MainTitleCard(
-                      title: 'Trending Now',
-                    ),
-                    kHeight,
+                BlocBuilder<HomeBloc, HomeState>(
+                  builder: (context, state) {
+                    if (state.isLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      );
+                    } else if (state.hasError) {
+                      return const Center(
+                        child: Text(
+                          'oops...Error While getting data',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      );
+                    }
+                    //releasesPastYear
+                    final _releasesPastYear = state.pastYearMovieList.map(
+                      (m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      },
+                    ).toList();
+                    _releasesPastYear.shuffle();
+                    // trending
+                    final _trending = state.trendingMovieList.map(
+                      (m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      },
+                    ).toList();
+                    _trending.shuffle();
+                    //tenseDramas
+                    final _tensDrama = state.tenseDramaMovieList.map(
+                      (m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      },
+                    ).toList();
+                    _tensDrama.shuffle();
+                    //south indian
+                    final _southIndia = state.southIndianMovieList.map(
+                      (m) {
+                        return '$imageAppendUrl${m.posterPath}';
+                      },
+                    ).toList();
+                    _southIndia.shuffle();
 
-                    ///! Number Card Widget
-                    NumberTileCard(),
-                    kHeight,
+                    return ListView(
+                      children: [
+                        const CustomBackgroundImage(),
+                        MainTitleCard(
+                          title: 'Released in Past year',
+                          posterList: _releasesPastYear.sublist(0, 15),
+                        ),
+                        kHeight,
+                        MainTitleCard(
+                          posterList: _trending.sublist(0, 15),
+                          title: 'Trending Now',
+                        ),
+                        kHeight,
 
-                    MainTitleCard(
-                      title: 'Tense Dramas',
-                    ),
-                    kHeight,
-                    MainTitleCard(
-                      title: 'South Indians Cinema',
-                    ),
-                  ],
+                        ///! Number Card Widget
+                        const NumberTileCard(),
+                        kHeight,
+
+                        MainTitleCard(
+                          posterList: _tensDrama.sublist(0, 15),
+                          title: 'Tense Dramas',
+                        ),
+                        kHeight,
+                        MainTitleCard(
+                          posterList: _southIndia.sublist(0, 15),
+                          title: 'South Indians Cinema',
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 scrollDirectionVisible.value == true
                     ? AnimatedContainer(

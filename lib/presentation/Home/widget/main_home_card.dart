@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/core/const.dart';
 
 class MainHomeCard extends StatelessWidget {
-  const MainHomeCard({
-    Key? key,
-  }) : super(key: key);
+  final String imageUrl;
+
+  const MainHomeCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,12 @@ class MainHomeCard extends StatelessWidget {
       height: 250,
       width: 150,
       decoration: BoxDecoration(
-          borderRadius: kBorderR10,
-          image: const DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg'))),
+        borderRadius: kBorderR10,
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(imageUrl),
+        ),
+      ),
     );
   }
 }
