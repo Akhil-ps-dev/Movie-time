@@ -3,6 +3,7 @@ part 'hot_and_new.g.dart';
 
 @JsonSerializable()
 class HotandNew {
+   @JsonKey(name: 'page')
   int? page;
   List<HotAndNewData> results;
 

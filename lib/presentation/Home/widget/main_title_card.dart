@@ -5,11 +5,12 @@ import '../../../core/const.dart';
 import 'main_home_card.dart';
 
 class MainTitleCard extends StatelessWidget {
-  const MainTitleCard({Key? key, required this.title})
+  const MainTitleCard({Key? key, required this.title, required this.posterList})
       : super(
           key: key,
         );
   final String title;
+  final List<String> posterList;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,10 +25,12 @@ class MainTitleCard extends StatelessWidget {
           maxHeight: 200,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: posterList.length,
             separatorBuilder: (ctx, index) => kWidth,
             itemBuilder: (ctx, index) {
-              return const MainHomeCard();
+              return MainHomeCard(
+                imageUrl: posterList[index],
+              );
             },
           ),
         )
