@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/colors/colors.dart';
+import '../../../core/colors/colors.dart';
 
 class VideoWidget extends StatelessWidget {
   final String url;
@@ -16,6 +16,29 @@ class VideoWidget extends StatelessWidget {
           child: Image.network(
             url,
             fit: BoxFit.cover,
+
+            //Loading error image
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              if (progress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
+                );
+              }
+            },
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return const Center(
+                child: Icon(
+                  Icons.wifi_find_outlined,
+                  size: 50,
+                  color: kGrey,
+                ),
+              );
+            },
           ),
         ),
         Positioned(

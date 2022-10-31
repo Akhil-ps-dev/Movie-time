@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/const.dart';
 import '../../Home/widget/custom_icon_widget.dart';
-import '../video_widget.dart';
+import 'video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
   final String id;
@@ -38,13 +38,13 @@ class ComingSoonWidget extends StatelessWidget {
               children: [
                 Text(
                   month,
-                  style: const TextStyle(fontSize: 15, color: kGrey),
+                  style: const TextStyle(fontSize: 20, color: kGrey),
                 ),
                 Text(
                   day,
                   style: const TextStyle(
-                      letterSpacing: 5,
-                      fontSize: 40,
+                      letterSpacing: 2,
+                      fontSize: 35,
                       color: kWhite,
                       fontWeight: FontWeight.bold),
                 ),
