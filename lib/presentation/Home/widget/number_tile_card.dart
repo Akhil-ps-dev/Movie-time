@@ -5,9 +5,9 @@ import '../../../core/const.dart';
 import '../../widgets/main_title.dart';
 
 class NumberTileCard extends StatelessWidget {
-  const NumberTileCard({
-    Key? key,
-  }) : super(key: key);
+  final List<String> posterList;
+
+  const NumberTileCard({super.key, required this.posterList});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class NumberTileCard extends StatelessWidget {
             itemBuilder: (ctx, index) {
               return NumberCardWidget(
                 index: index,
+                imageUrl: posterList[index],
               );
             },
           ),

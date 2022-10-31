@@ -64,6 +64,14 @@ class ScreenHome extends StatelessWidget {
                       },
                     ).toList();
                     _trending.shuffle();
+                    //top10
+                    final _top10TvShow = state.trendingTvList.map(
+                      (t) {
+                        return '$imageAppendUrl${t.posterPath}';
+                      },
+                    ).toList();
+                    _top10TvShow.shuffle();
+
                     //tenseDramas
                     final _tensDrama = state.tenseDramaMovieList.map(
                       (m) {
@@ -82,30 +90,35 @@ class ScreenHome extends StatelessWidget {
                     return ListView(
                       children: [
                         const CustomBackgroundImage(),
-                        MainTitleCard(
-                          title: 'Released in Past year',
-                          posterList: _releasesPastYear.sublist(0, 15),
-                        ),
+                        if (_releasesPastYear.length >= 10)
+                          MainTitleCard(
+                            title: 'Released in Past year',
+                            posterList: _releasesPastYear.sublist(0, 10),
+                          ),
                         kHeight,
-                        MainTitleCard(
-                          posterList: _trending.sublist(0, 15),
-                          title: 'Trending Now',
-                        ),
+                        if (_trending.length >= 10)
+                          MainTitleCard(
+                            posterList: _trending.sublist(0, 10),
+                            title: 'Trending Now',
+                          ),
                         kHeight,
 
                         ///! Number Card Widget
-                        const NumberTileCard(),
-                        kHeight,
-
-                        MainTitleCard(
-                          posterList: _tensDrama.sublist(0, 15),
-                          title: 'Tense Dramas',
+                        NumberTileCard(
+                          posterList: _top10TvShow.sublist(0, 10),
                         ),
                         kHeight,
-                        MainTitleCard(
-                          posterList: _southIndia.sublist(0, 15),
-                          title: 'South Indians Cinema',
-                        ),
+                        if (_tensDrama.length >= 10)
+                          MainTitleCard(
+                            posterList: _tensDrama.sublist(0, 10),
+                            title: 'Tense Dramas',
+                          ),
+                        kHeight,
+                        if (_southIndia.length >= 10)
+                          MainTitleCard(
+                            posterList: _southIndia.sublist(0, 10),
+                            title: 'South Indians Cinema',
+                          ),
                       ],
                     );
                   },

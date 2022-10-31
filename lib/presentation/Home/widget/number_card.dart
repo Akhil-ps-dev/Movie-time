@@ -5,9 +5,10 @@ import 'package:flutter_movie_app/core/colors/colors.dart';
 import '../../../core/const.dart';
 
 class NumberCardWidget extends StatelessWidget {
-  const NumberCardWidget({super.key, required this.index});
+  const NumberCardWidget(
+      {super.key, required this.index, required this.imageUrl});
   final int index;
-
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,10 +24,10 @@ class NumberCardWidget extends StatelessWidget {
               width: 150,
               decoration: BoxDecoration(
                 borderRadius: kBorderR10,
-                image: const DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/djM2s4wSaATn4jVB33cV05PEbV7.jpg',
+                    imageUrl,
                   ),
                 ),
               ),
